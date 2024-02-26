@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.title }}
+            {% if not task.completed %}
+                <a href="{% url 'complete-task' task.id %}">Mark as completed</a>
+            {% endif %}
+            <a href="{% url 'delete-task' task.id %}">Delete Task</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add-task' %}">Add Task</a>
+</body>
+</html>
